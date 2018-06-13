@@ -4,34 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
 
-import co.edu.ucentral.objects.Matriz;
+import co.edu.ucentral.objects.Generator;
 import co.edu.ucentral.objects.Nodo;
 
 public class firstDeep extends algorithm {
-	public Nodo algorithm(Stack[] initial,Stack[] meta,int nProfundidad) {
-		try{
-			Nodo current = new Nodo();
-			current.setChild(initial);
-			open.add(current);
-			boolean finish = false;
-			int a = 0;
-			while(!open.isEmpty() && !finish) {
-				current = (Nodo) open.get(0);
-				open.remove(current);
-				if(!inClosed(current.getChild()) && nProfundidad < this.nProfundidad) {
-					closed.add(current);
-					ArrayList<Nodo> sub =matriz.generateNext(current.getChild(), closed,open);
-					if(!compareTo(sub,current,meta))open.addAll(sub);
-					else return meta2;
-				}else return meta2;
-			}
+	
+	public void addAt(ArrayList<Nodo> open,ArrayList<Nodo> sucesors) {
+		try {
+			open.addAll(sucesors);
 		}catch(Exception ex) {
 			System.out.println("Error algorithm");
 			ex.printStackTrace();
 		}
-		return null;
 		
 	}
-	
 
 }
